@@ -1,0 +1,20 @@
+{
+    "Resources": {
+        "CodeStorage": {
+            "Type": "AWS::S3::Bucket",
+            "Properties": {
+                "BucketName": "aws-iot-sample-app-backend-code-storage",
+                "BucketEncryption": {
+                    "ServerSideEncryptionConfiguration": [
+                        {
+                            "ServerSideEncryptionByDefault": {
+                                "SSEAlgorithm": "AES256"
+                            }
+                        }
+                    ]
+                },
+                "AccessControl": "Private"
+            }
+        }
+    }
+}
