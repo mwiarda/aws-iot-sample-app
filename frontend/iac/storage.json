@@ -1,0 +1,24 @@
+{
+    "Resources": {
+        "StorageBucket": {
+            "Type": "AWS::S3::Bucket",
+            "Properties": {
+                "BucketName": "aws-iot-sample-app-frontend-storage",
+                "BucketEncryption": {
+                    "ServerSideEncryptionConfiguration": [
+                        {
+                            "ServerSideEncryptionByDefault": {
+                                "SSEAlgorithm": "AES256"
+                            }
+                        }
+                    ]
+                },
+                "AccessControl": "PublicRead",
+                "WebsiteConfiguration": {
+                    "IndexDocument": "index.html",
+                    "ErrorDocument": "error.html"
+                }
+            }
+        }
+    }
+}
