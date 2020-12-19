@@ -4,8 +4,13 @@ case "$1" in
     template="$(cat $(dirname $0)/storage.json)"
     if aws cloudformation validate-template --template-body "$template" >/dev/null; then
         if aws cloudformation create-stack --stack-name aws-iot-sample-app-frontend-storage --template-body "$template" >/dev/null; then
-            echo "I: Storage instanciated successfully"
-            exit 0
+            if aws cloudformation wait stack-create-complete --stack-name "aws-iot-sample-app-frontend-storage" ; then
+                echo "I: Storage instanciated successfully"
+                exit 0
+            else 
+                echo "E: Storage instanciation failed"
+                exit 1
+            fi 
         else 
             echo "E: Storage instanciation failed"
             exit 1
